@@ -1,0 +1,18 @@
+# Default ignored files
+**/target
+**/.classpath
+**/.project
+**/.settings
+**/.metadata
+**/settings.xml
+**/profiles.xml
+**/target
+**/build
+**/*.ids
+**/*.iml
+**/*.ipr
+**/*.iws
+**/.idea
+**/*.log.gz
+**/*.log
+**/*pycache*
