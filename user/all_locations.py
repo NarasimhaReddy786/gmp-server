@@ -1,5 +1,6 @@
 from flask_restful import Resource
 from config import db_connector
+from bson.objectid import ObjectId
 
 
 class AllLocations(Resource):
@@ -14,17 +15,18 @@ class AllLocations(Resource):
         client = conn.getConnection()
         db = client[database_name]
         collection_locations = db[collection_gmp]
-        cursor = collection_locations.find_one({"_id": int(loc_id)})
+        cursor = collection_locations.find_one({"_id": ObjectId(loc_id)})
+
+        locationObj = cursor["location"]
 
         json_response = {}
-
         location = {}
-        location["locationId"] = cursor["_id"]
-        location["locationName"] = cursor["location_name"]
+        location["locationId"] = str(cursor["_id"])
+        location["locationName"] = locationObj["location_name"]
         json_response["location"] = location
         
         destinations = []
-        for document in cursor["positions"]:
+        for document in locationObj["positions"]:
             position_name = document["position_name"]
             position_id = document["position_id"]
             is_destination = document["destination"]
@@ -42,4 +44,3 @@ class AllLocations(Resource):
         json_response["detinations"] = destinations
         
         return json_response
-

@@ -5,6 +5,7 @@ import qrcode
 import zipfile
 import os
 from flask import send_file
+import shutil
 
 logger = logging.getLogger('shortest_path')
 
@@ -31,7 +32,6 @@ class Generate_qr_codes(Resource):
                     img = qrcode.make(str(loc_id)+'/'+str(position_id))
                     print(img)
                     img.save('temp/'+str(position_name)+'.png')
-
             # removes old zip file
             os.remove("qr_codes.zip")
             # Zip file Initialization
@@ -52,4 +52,4 @@ class Generate_qr_codes(Resource):
             logger.error("Error while generating QR codes with trace back :%s", e)
         finally:
             conn.closeConnection()
-            os.rmdir('temp')
+            shutil.rmtree('temp')

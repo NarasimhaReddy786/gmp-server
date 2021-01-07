@@ -14,12 +14,12 @@ class Connection:
     # read the db connection ip and port details
     @staticmethod
     def readUrl(self):
-        return read_properties.read("C:/Work@Evry/TechUtsav/GMP/gmp_server/config/dbconfig.properties")
+        return read_properties.read("config\dbconfig.properties")
 
     # read the admin user password to authenticate
     @staticmethod
     def readAdminPassword(self):
-            return read_properties.read("dbadmin.properties")
+            return read_properties.read("config\dbadmin.properties")
 
     # connect to mongo db
     def connect_db(self):
