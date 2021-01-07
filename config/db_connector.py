@@ -28,7 +28,7 @@ class Connection:
             host_from_props = url['mongodburlIP'][0]
             port_from_props = url['mongodburlPORT'][0]
             logger.info("Thread Id " + str(_thread.get_ident()) + " Initiating DB connection")
-            client = MongoClient(host=host_from_props, port=int(port_from_props), maxIdleTimeMS=60000, maxPoolSize=1)
+            client = MongoClient("mongodb+srv://admin:admin@cluster0.4tlbt.mongodb.net/gmp_db?retryWrites=true&w=majority")
             # db = client["admin"]
             #admin_password = self.readAdminPassword(self)['password'][0]
             # db.authenticate("admin", admin_password);
