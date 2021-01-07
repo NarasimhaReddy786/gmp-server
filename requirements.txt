@@ -30,3 +30,4 @@ Pillow==8.0.1
 opencv-python==4.4.0.46
 qrcode==6.1
 dnspython==2.1.0
+gunicorn
