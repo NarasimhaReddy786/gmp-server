@@ -24,9 +24,9 @@ class Connection:
     # connect to mongo db
     def connect_db(self):
         try:
-            url = self.readUrl(self)
-            host_from_props = url['mongodburlIP'][0]
-            port_from_props = url['mongodburlPORT'][0]
+            #url = self.readUrl(self)
+            #host_from_props = url['mongodburlIP'][0]
+            #port_from_props = url['mongodburlPORT'][0]
             logger.info("Thread Id " + str(_thread.get_ident()) + " Initiating DB connection")
             client = MongoClient("mongodb+srv://admin:admin@cluster0.4tlbt.mongodb.net/gmp_db?retryWrites=true&w=majority")
             # db = client["admin"]
