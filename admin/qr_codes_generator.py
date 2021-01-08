@@ -33,7 +33,7 @@ class Generate_qr_codes(Resource):
                     print(img)
                     img.save('temp/'+str(position_name)+'.png')
             # removes old zip file
-            os.remove("qr_codes.zip")
+            #os.remove("qr_codes.zip")
             # Zip file Initialization
             zip_folder = zipfile.ZipFile('qr_codes.zip', 'w', compression=zipfile.ZIP_STORED)  # Compression type
 
