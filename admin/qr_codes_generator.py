@@ -31,8 +31,8 @@ class Generate_qr_codes(Resource):
                 if "Y" == document["destination"]:
                     position_name = document["position_name"]
                     position_id = document["position_id"]
-                    img = qrcode.make(str(loc_id)+'/'+str(position_id))
-                    #print(img)
+                    img = qrcode.make(str('https://gmpath.herokuapp.com/pathsearch/')+str(loc_id)+'/'+str(position_id))
+                    logger.info(img)
                     img.save('temp/'+str(position_name)+'.png')
 
             # removes old zip file
