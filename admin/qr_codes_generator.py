@@ -6,6 +6,7 @@ import zipfile
 import os
 from flask import send_file
 import shutil
+from bson.objectid import ObjectId
 
 logger = logging.getLogger('shortest_path')
 
@@ -22,16 +23,18 @@ class Generate_qr_codes(Resource):
             client = conn.getConnection()
             db = client[database_name]
             collection_locations = db[collection_gmp]
-            cursor = collection_locations.find_one({"_id": int(loc_id)})
-
+            cursor = collection_locations.find_one({"_id": ObjectId(loc_id)})
+            locationObj = cursor["location"]
+            
             os.mkdir('temp')
-            for document in cursor["positions"]:
+            for document in locationObj["positions"]:
                 if "Y" == document["destination"]:
                     position_name = document["position_name"]
                     position_id = document["position_id"]
                     img = qrcode.make(str(loc_id)+'/'+str(position_id))
-                    print(img)
+                    #print(img)
                     img.save('temp/'+str(position_name)+'.png')
+
             # removes old zip file
             #os.remove("qr_codes.zip")
             # Zip file Initialization

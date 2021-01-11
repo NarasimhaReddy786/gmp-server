@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 from flask_restful import Api
-from user import get_shortest_path, all_locations, get_paths
+from user import get_shortest_path, all_locations, get_paths, get_all_location_names
 from admin import store_location
 from admin import qr_codes_generator
 
@@ -24,6 +24,8 @@ fh.setFormatter(formatter)
 # add the handlers to logger
 logger.addHandler(fh)
 
+
+api.add_resource(get_all_location_names.AllLocationNames, '/get_location_names')
 
 # to get all locations in company/hospital/building takes Id
 api.add_resource(all_locations.AllLocations, '/destination_list/<loc_id>/<pos_id>')
