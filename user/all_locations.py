@@ -41,6 +41,19 @@ class AllLocations(Resource):
                 source["positionName"] = position_name
                 json_response["source"] = source
 
+        try:
+            amenitiesFromDb = locationObj["amenities"]
+            amenities = []
+            for document in amenitiesFromDb:
+                amenity = {}
+                amenity["positionId"] = document["position_id"]
+                amenity["positionName"] = document["position_name"]
+                amenities.append(amenity)
+            json_response["amenities"] = amenities
+        except KeyError:
+            pass
+
+
         json_response["detinations"] = destinations
         
         return json_response

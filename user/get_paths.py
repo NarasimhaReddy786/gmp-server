@@ -64,7 +64,7 @@ class GetPaths(Resource):
                 else:
                     draw.line(((shortest_path_with_coordinates[arrayIndex-1]['x'], shortest_path_with_coordinates[arrayIndex-1]['y']), 
                         (shortest_path_with_coordinates[arrayIndex]['x'], shortest_path_with_coordinates[arrayIndex]['y'])), 
-                        fill=(0, 235, 138), width=8)
+                        fill=(7, 149, 25), width=8)
                     if arrayIndex == lengthOfCoordinatesArray-1:
                         pinImage = Image.open('destinationPin.png')
                         im.paste(pinImage, (shortest_path_with_coordinates[arrayIndex]['x'], shortest_path_with_coordinates[arrayIndex]['y']))
