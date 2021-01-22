@@ -58,7 +58,7 @@ def get_longest_path(final_paths, positions_coordinats_dict):
         path_dist[dist] = index
         index += 1
 
-    longest_distance = sorted(path_dist.keys())[-1]
+    longest_distance = sorted(path_dist.keys())[1]
     index = path_dist[longest_distance]
     return final_paths[index]
 
